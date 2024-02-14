@@ -32,4 +32,19 @@ export class AuthService {
       user: result,
     };
   }
+
+
+  async signup(loginUserInput: LoginUserInput){
+    const user = await this.userService.findOne(loginUserInput.username);
+
+    if(user){
+        throw new Error('User already exists');
+    }
+
+
+    return this.userService.create({
+        ...loginUserInput,
+    })
+
+  }
 }

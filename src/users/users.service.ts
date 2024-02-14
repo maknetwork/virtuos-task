@@ -27,6 +27,7 @@ export class UsersService {
       ...createUserInput,
       id: this.users.length + 1
     }
+    this.users.push(user);
     return 'This action adds a new user';
   }
 
@@ -37,6 +38,8 @@ export class UsersService {
   findOne(username: string) {
     return this.users.find((user)=> user.username===username);
   }
+
+  
 
  
 }
